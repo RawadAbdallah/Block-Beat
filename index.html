@@ -17,7 +17,87 @@
 </head>
 
 <body>
+    <div class="app">
+        <header>
+            <h1>Block Beat</h1>
+            <p>Test your memory to the limit.</p>
+        </header>
 
+        <main>
+            <div class="blocks-wrapper">
+                <div id="blue-block" class="block">
+                    <div class="top-left"></div>
+                    <div class="top-right"></div>
+                    <div class="bottom-left"></div>
+                    <div class="bottom-right"></div>
+                    <div class="inner-block"></div>
+                </div>
+                <div id="green-block" class="block">
+                    <div class="top-left"></div>
+                    <div class="top-right"></div>
+                    <div class="bottom-left"></div>
+                    <div class="bottom-right"></div>
+                    <div class="inner-block"></div>
+                </div>
+                <div id="pink-block" class="block">
+                    <div class="top-left"></div>
+                    <div class="top-right"></div>
+                    <div class="bottom-left"></div>
+                    <div class="bottom-right"></div>
+                    <div class="inner-block"></div>
+                </div>
+                <div id="orange-block" class="block">
+                    <div class="top-left"></div>
+                    <div class="top-right"></div>
+                    <div class="bottom-left"></div>
+                    <div class="bottom-right"></div>
+                    <div class="inner-block"></div>
+                </div>
+            </div>
+        </main>
+        <div id="stars-container"></div>
+
+        <footer>
+            <h1 id="start-game">Press any key to start</h1>
+            <h1 id="level-counter" class="hidden">Level: 0  </h1>
+        </footer>
+
+        <div id="game-over-screen" class="small">
+            <h1>Game over</h1>
+            <p>You reached level <span id="game-over-screen-score"></span></p>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+        
+        <div id="mute-button">
+            <img id="muted-icon" src="./assets/images/mute-icon.png" alt="Mute Audio" width="50">
+            <img id="unmuted-icon"class="hidden" src="./assets/images/unmute-icon.png" alt="Unmute Audio" width="50">
+        </div>
+
+        <audio id="game-music" loop >
+            <source  src="./assets/audio/gamemusic.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="blue-music" >
+            <source src="./assets/audio/blue.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="green-music" >
+            <source src="./assets/audio/green.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="orange-music" >
+            <source src="./assets/audio/orange.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="pink-music">
+            <source src="./assets/audio/pink.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="game-over-sound">
+            <source src="./assets/audio/wrong.mp3" type="audio/mp3">
+        </audio>
+        <div id="success-overlay" class="invisible"></div>
+    </div>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/stars.js"></script>
 </body>
