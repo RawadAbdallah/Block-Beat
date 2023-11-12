@@ -69,14 +69,6 @@ body {
     overflow: hidden;
   }
   
-  .block:active {
-    transform: scale(0.95);
-    border: 5px solid;
-    filter: brightness(2);
-    transform: scale(1.1);
-  
-  }
-  
   .top-left,
   .top-right,
   .bottom-left,
