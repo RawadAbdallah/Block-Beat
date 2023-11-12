@@ -1,0 +1,69 @@
+// For the stars background animation
+// Coded by Penaldo Pepsi Cola not me
+// Free Palestine BTW #LATSHE
+
+let app = document.getElementById('stars-container')
+let resizeTimeout;
+
+document.addEventListener("DOMContentLoaded", function () {
+  placeRandomStars();
+});
+
+function placeRandomStars() {
+
+  const pixelDensity = 5000;
+
+  const bodyWidth = app.clientWidth - 2;
+  const bodyHeight = app.clientHeight - 2;
+
+  const totalPixels = bodyWidth * bodyHeight;
+
+  const numberOfStars = Math.floor(totalPixels / pixelDensity);
+
+  for (let i = 0; i < numberOfStars; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+
+    const randomX = Math.floor(Math.random() * bodyWidth);
+    const randomY = Math.floor(Math.random() * bodyHeight);
+
+    star.dataset.percentX = randomX / bodyWidth;
+    star.dataset.percentY = randomY / bodyHeight;
+
+    star.style.left = `${randomX}px`;
+    star.style.top = `${randomY}px`;
+
+    const pulseDuration = 4 + Math.random() * 8;
+    star.style.animation = `pulse ${pulseDuration}s infinite`;
+
+    document.querySelector('.app').appendChild(star);
+
+    void star.offsetWidth;
+
+    // Fade in the star
+    setTimeout(() => (star.style.opacity = "1"), 10);
+  }
+}
+
+function fadeOutAndAdjustStarPositions() {
+  const bodyWidth = app.body.clientWidth - 2;
+  const bodyHeight = app.body.clientHeight - 2;
+
+  const existingStars = document.querySelectorAll(".star");
+  existingStars.forEach((star) => {
+    star.style.opacity = "0";
+
+    const adjustedX = star.dataset.percentX * bodyWidth;
+    const adjustedY = star.dataset.percentY * bodyHeight;
+
+    star.style.left = `${adjustedX}px`;
+    star.style.top = `${adjustedY}px`;
+  });
+}
+
+function removeExistingStars() {
+  const existingStars = document.querySelectorAll(".star");
+  existingStars.forEach((star) => {
+    app.removeChild(star);
+  });
+}
