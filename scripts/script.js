@@ -19,6 +19,13 @@ const orangeBlockSound =  new Audio('./assets/audio/orange.mp3')
 const pinkBlockSound = new Audio('./assets/audio/pink.mp3')
 const gameOverSound = document.getElementById('game-over-sound')
 
+blueBlockSound.volume = 0.1;
+greenBlockSound.volume = 0.1;
+orangeBlockSound.volume = 0.1;
+pinkBlockSound.volume = 0.1;
+gameOverSound.volume = 0.02;
+gameMusic.volume = 0.05;
+
 let gameStarted = false;
 let isShowingSeq = false;
 const gameSeq = [];
