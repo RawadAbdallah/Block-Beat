@@ -8,28 +8,36 @@ const greenSound = new Audio("./sounds/green.mp3");
 const redSound = new Audio("./sounds/red.mp3");
 const yellowSound = new Audio("./sounds/yellow.mp3");
 const blueSound = new Audio("./sounds/blue.mp3");
-const gameOverSound = new Audio('./sound/wrong.mp3')
+const gameOverSound = new Audio("./sound/wrong.mp3");
 
 const gameSeq = [];
 const playerSeq = [];
 let level = 0;
 let btn_clicks = 0;
 let isGameStarted = false;
+let showingSeq = false;
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
+    if (showingSeq) {
+      return;
+    }
+
     showBlock(index + 1);
     playerSeq.push(index + 1);
     if (playerSeq[btn_clicks] === gameSeq[btn_clicks]) {
-      console.log(`${playerSeq[btn_clicks]} is equal to  ${gameSeq[btn_clicks]}`)
+      console.log(
+        `${playerSeq[btn_clicks]} is equal to  ${gameSeq[btn_clicks]}`
+      );
       btn_clicks++;
     } else {
-      console.log(`${playerSeq[btn_clicks]} is NOT equal to  ${gameSeq[btn_clicks]}`);
+      console.log(
+        `${playerSeq[btn_clicks]} is NOT equal to  ${gameSeq[btn_clicks]}`
+      );
       gameOver();
     }
 
-    if (playerSeq.length !== 0 && playerSeq.length === gameSeq.length) {
-      console.log('LEVEL COMPLETED')
+    if (playerSeq.length === gameSeq.length && checkUserSeq()) {
       playerSeq.length = 0;
       btn_clicks = 0;
       level++;
@@ -48,15 +56,8 @@ window.addEventListener("keydown", () => {
   }
 });
 
-window.addEventListener("click", () => {
-  if (!isGameStarted) {
-    isGameStarted = true;
-    startGame();
-  }
-});
-
 function startGame() {
-  // reseting everything
+  // resetting everything
   gameSeq.length = 0;
   playerSeq.length = 0;
   level = 1;
@@ -69,24 +70,18 @@ function startLevel() {
   gameSeq.push(randomBlockNumber);
   levelTitle.innerText = `Level ${level}`;
   showSeq(gameSeq);
-  console.log(`gameSeq: ${gameSeq}`)
+  console.log(`gameSeq: ${gameSeq}`);
 }
 
 function showSeq() {
+  showingSeq = true;
   gameSeq.forEach((blockNumber, index) => {
     setTimeout(() => {
-      if(!isGameStarted) return
+      if (!isGameStarted) return;
       showBlock(blockNumber);
     }, index * 1000);
   });
-}
-
-function toggleBlock(block, sound) {
-  block.classList.toggle("pressed");
-  sound.play();
-  setTimeout(() => {
-    block.classList.toggle("pressed");
-  }, 100);
+  setTimeout(() => showingSeq = false, gameSeq.length * 1000);
 }
 
 function showBlock(blockNumber) {
@@ -101,14 +96,25 @@ function showBlock(blockNumber) {
   }
 }
 
+function toggleBlock(block, sound) {
+  block.classList.toggle("pressed");
+  sound.play();
+  setTimeout(() => {
+    block.classList.toggle("pressed");
+  }, 100);
+}
+
 function checkUserSeq() {
   return JSON.stringify(gameSeq) === JSON.stringify(playerSeq);
 }
 
 function gameOver() {
- 
-  levelTitle.innerText = 'Game over, press to play'
-  setTimeout(()=> {
-    isGameStarted = false
-  }, 1000)
+  levelTitle.innerText = "Game over, press to play";
+  document.body.style.backgroundColor = "red";
+  gameOverSound.play();
+  setTimeout(() => (document.body.style.backgroundColor = "#011F3F"), 100);
+
+  setTimeout(() => {
+    isGameStarted = false;
+  }, 1000);
 }
