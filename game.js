@@ -94,7 +94,7 @@ function startLevel() {
     gameSeq.push(randomBlockNumber);
     levelTitle.innerText = `Level ${level}`;
     showSeq(gameSeq);
-    console.log(`gameSeq: ${gameSeq}`);
+   
 }
 
 function showSeq() {
@@ -129,9 +129,6 @@ function toggleBlock(block, sound) {
 }
 
 function checkUserSeq() {
-    console.log(`JSON.stringify(gameSeq) === JSON.stringify(playerSeq)`);
-    console.log(JSON.stringify(gameSeq));
-    console.log(JSON.stringify(playerSeq));
     return JSON.stringify(gameSeq) === JSON.stringify(playerSeq);
 }
 
