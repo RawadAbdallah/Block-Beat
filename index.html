@@ -2,86 +2,91 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/utilities.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Zen+Dots&display=swap"
-        rel="stylesheet">
-    <title>Block Beat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/utilities.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Zen+Dots&display=swap"
+    rel="stylesheet">
+  <title>Block Beat</title>
 </head>
 
 <body>
-    <div class="app">
-        <header>
-            <h1>Block Beat</h1>
-            <p>Test your memory to the limit.</p>
-        </header>
+  <div class="app">
+    <header>
+      <h1>Block Beat</h1>
+      <p>Test your memory to the limit.</p>
+    </header>
 
-        <main>
-            <div class="blocks-wrapper">
-                <div id="blue-block" class="block greyed-out">
-                    <div class="top-left"></div>
-                    <div class="top-right"></div>
-                    <div class="bottom-left"></div>
-                    <div class="bottom-right"></div>
-                    <div class="inner-block"></div>
-                </div>
-                <div id="green-block" class="block greyed-out">
-                    <div class="top-left"></div>
-                    <div class="top-right"></div>
-                    <div class="bottom-left"></div>
-                    <div class="bottom-right"></div>
-                    <div class="inner-block"></div>
-                </div>
-                <div id="pink-block" class="block greyed-out">
-                    <div class="top-left"></div>
-                    <div class="top-right"></div>
-                    <div class="bottom-left"></div>
-                    <div class="bottom-right"></div>
-                    <div class="inner-block"></div>
-                </div>
-                <div id="orange-block" class="block greyed-out">
-                    <div class="top-left"></div>
-                    <div class="top-right"></div>
-                    <div class="bottom-left"></div>
-                    <div class="bottom-right"></div>
-                    <div class="inner-block"></div>
-                </div>
-            </div>
-        </main>
-        <div id="stars-container"></div>
-
-        <footer>
-            <h1 id="start-game">Press any key to start</h1>
-            <h1 id="level-counter" class="hidden">Level: 1</h1>
-            <h1 id="best-score">Best score: 0</h1>
-        </footer>
-
-        <div id="game-over-screen" class="small">
-            <h1>Game over</h1>
-            <h2 id="game-over-new-best-score" class="hidden">You have boosted your memory, new best score </h2>
-            <p>You reached level <span id="game-over-screen-score"></span></p>
-            <button id="play-again-btn">Play Again</button>
-            
+    <main>
+      <div class="blocks-wrapper">
+        <div id="blue-block" class="block greyed-out">
+          <div class="top-left"></div>
+          <div class="top-right"></div>
+          <div class="bottom-left"></div>
+          <div class="bottom-right"></div>
+          <div class="inner-block"></div>
         </div>
-        
-        <div id="mute-button">
-            <img id="muted-icon" src="./assets/images/mute-icon.png" alt="Mute Audio" width="50">
-            <img id="unmuted-icon"class="hidden" src="./assets/images/unmute-icon.png" alt="Unmute Audio" width="50">
+        <div id="green-block" class="block greyed-out">
+          <div class="top-left"></div>
+          <div class="top-right"></div>
+          <div class="bottom-left"></div>
+          <div class="bottom-right"></div>
+          <div class="inner-block"></div>
         </div>
-        <audio id="game-over-sound">
-            <source src="./assets/audio/wrong.mp3" type="audio/mp3">
-        </audio>
-        <div id="success-overlay" class="invisible"></div>
+        <div id="pink-block" class="block greyed-out">
+          <div class="top-left"></div>
+          <div class="top-right"></div>
+          <div class="bottom-left"></div>
+          <div class="bottom-right"></div>
+          <div class="inner-block"></div>
+        </div>
+        <div id="orange-block" class="block greyed-out">
+          <div class="top-left"></div>
+          <div class="top-right"></div>
+          <div class="bottom-left"></div>
+          <div class="bottom-right"></div>
+          <div class="inner-block"></div>
+        </div>
+      </div>
+    </main>
+    <div id="stars-container"></div>
+
+    <footer>
+      <h1 id="start-game">Press any key to start</h1>
+      <h1 id="level-counter" class="hidden">Level: 1</h1>
+      <h1 id="best-score">Best score: 0</h1>
+    </footer>
+
+    <div id="game-over-screen" class="small">
+      <h1>Game over</h1>
+      <h2 id="game-over-new-best-score" class="hidden">You have boosted your memory, new best score </h2>
+      <p>You reached level <span id="game-over-screen-score"></span></p>
+      <button id="play-again-btn">Play Again</button>
+
     </div>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/stars.js"></script>
+
+    <div id="mute-button">
+      <img id="muted-icon" src="./assets/images/mute-icon.png" alt="Mute Audio" width="50">
+      <img id="unmuted-icon" class="hidden" src="./assets/images/unmute-icon.png" alt="Unmute Audio" width="50">
+    </div>
+    <audio id="game-over-sound">
+      <source src="./assets/audio/wrong.mp3" type="audio/mp3">
+    </audio>
+    <div id="success-overlay" class="invisible"></div>
+    <div id="loading-screen">
+      <div class="block">
+        <h2>Loading...</h2>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/stars.js"></script>
 </body>
 
 </html>
