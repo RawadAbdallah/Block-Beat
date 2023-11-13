@@ -61,9 +61,6 @@ main {
 }
 
 .block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     min-width: 110px;
     min-height: 110px;
@@ -358,12 +355,15 @@ main {
     width: 100vw;
     height: 100vh;
     text-transform: uppercase;
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     overflow: hidden;
     backdrop-filter: blur(50px);
     z-index: 3;
 }
 
 #loading-screen .block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: loader 2s ease-in-out infinite alternate;
 }
