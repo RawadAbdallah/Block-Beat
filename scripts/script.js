@@ -5,6 +5,7 @@ const pinkBlock = document.getElementById("pink-block");
 const orangeBlock = document.getElementById("orange-block");
 const startGameText = document.getElementById("start-game");
 const levelCounterText = document.getElementById("level-counter");
+const bestScoreElem = document.getElementById('best-score');
 const gameOverScreen = document.getElementById("game-over-screen");
 const gameOverScreenScore = document.getElementById("game-over-screen-score");
 const muteButton = document.getElementById("mute-button");
@@ -28,9 +29,15 @@ gameMusic.volume = 0.05;
 
 let gameStarted = false;
 let isShowingSeq = false;
+let isBestScoreBeaten = false;
 const gameSeq = [];
 const playerSeq = [];
 let levelCounter = 1;
+let bestScore = parseInt(sessionStorage.getItem('best-score')) || 0
+
+window.addEventListener('load', () => {
+  bestScoreElem.innerText = `Best score: ${bestScore}`
+})
 
 const gameOver = () => {
   gameOverSound.play();
@@ -53,6 +60,12 @@ const checkUserInput = () => {
   //Player passed the level
   if (playerSeq.length === gameSeq.length) {
     playerSeq.length = 0;
+    if(levelCounter > bestScore){
+      isBestScoreBeaten = true
+      bestScore++ ;
+      bestScoreElem.innerText = `Best score: ${bestScore}`;
+      sessionStorage.setItem('best-score', bestScore);
+    } 
     levelCounter++;
     successOverlay.classList.toggle("invisible");
     setTimeout(() => {
@@ -151,8 +164,13 @@ window.addEventListener("keydown", () => {
   if (!gameStarted) startGame();
 });
 
+window.addEventListener('click', () => {
+  if(!gameStarted) startGame();
+})
+
 // Mute button
-muteButton.addEventListener("click", () => {
+muteButton.addEventListener("click", (e) => {
+  e.stopPropagation()
   if (!gameMusic.paused) {
     gameMusic.pause();
     document.getElementById("muted-icon").classList.toggle("hidden");
