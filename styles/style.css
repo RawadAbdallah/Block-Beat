@@ -63,8 +63,8 @@ body {
   
   .block {
     position: relative;
-    min-width:100px;
-    min-height: 100px;
+    min-width:110px;
+    min-height: 110px;
     width: 10vw;
     height: 10vw;
     max-width: 150px;
