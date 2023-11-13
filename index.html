@@ -25,28 +25,28 @@
 
         <main>
             <div class="blocks-wrapper">
-                <div id="blue-block" class="block">
+                <div id="blue-block" class="block greyed-out">
                     <div class="top-left"></div>
                     <div class="top-right"></div>
                     <div class="bottom-left"></div>
                     <div class="bottom-right"></div>
                     <div class="inner-block"></div>
                 </div>
-                <div id="green-block" class="block">
+                <div id="green-block" class="block greyed-out">
                     <div class="top-left"></div>
                     <div class="top-right"></div>
                     <div class="bottom-left"></div>
                     <div class="bottom-right"></div>
                     <div class="inner-block"></div>
                 </div>
-                <div id="pink-block" class="block">
+                <div id="pink-block" class="block greyed-out">
                     <div class="top-left"></div>
                     <div class="top-right"></div>
                     <div class="bottom-left"></div>
                     <div class="bottom-right"></div>
                     <div class="inner-block"></div>
                 </div>
-                <div id="orange-block" class="block">
+                <div id="orange-block" class="block greyed-out">
                     <div class="top-left"></div>
                     <div class="top-right"></div>
                     <div class="bottom-left"></div>
@@ -65,8 +65,10 @@
 
         <div id="game-over-screen" class="small">
             <h1>Game over</h1>
+            <h2 id="game-over-new-best-score" class="hidden">You have boosted your memory, new best score </h2>
             <p>You reached level <span id="game-over-screen-score"></span></p>
             <button id="play-again-btn">Play Again</button>
+            
         </div>
         
         <div id="mute-button">

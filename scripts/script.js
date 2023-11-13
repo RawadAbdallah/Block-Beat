@@ -3,11 +3,13 @@ const blueBlock = document.getElementById("blue-block");
 const greenBlock = document.getElementById("green-block");
 const pinkBlock = document.getElementById("pink-block");
 const orangeBlock = document.getElementById("orange-block");
+const blocks = [blueBlock, greenBlock, pinkBlock, orangeBlock]
 const startGameText = document.getElementById("start-game");
 const levelCounterText = document.getElementById("level-counter");
 const bestScoreElem = document.getElementById('best-score');
 const gameOverScreen = document.getElementById("game-over-screen");
 const gameOverScreenScore = document.getElementById("game-over-screen-score");
+const gameOverNewBestScore = document.getElementById('game-over-new-best-score');
 const muteButton = document.getElementById("mute-button");
 const successOverlay = document.getElementById("success-overlay");
 const playAgainBtn = document.getElementById("play-again-btn");
@@ -41,9 +43,14 @@ window.addEventListener('load', () => {
 
 const gameOver = () => {
   gameOverSound.play();
+  if(isBestScoreBeaten){
+    gameOverNewBestScore.classList.toggle('hidden')
+  }
+  //reset
   gameOverScreen.classList.toggle("small");
   gameOverScreenScore.innerText = levelCounter;
   gameStarted = false;
+  isBestScoreBeaten = false;
   gameSeq.length = 0;
   playerSeq.length = 0;
   levelCounter = 1;
@@ -82,10 +89,10 @@ const addClickEventListener = (block, number, blockSound) => {
   block.addEventListener("click", () => {
     if (!isShowingSeq) { //for stopping the player from interfering the animation and cheating.
       if (gameStarted) {
+        showBlock(block, blockSound)
         playerSeq.push(number);
         checkUserInput();
       }
-      showBlock(block, blockSound)
     }
   });
 };
@@ -143,17 +150,25 @@ const startLevel = () => {
 //Start Game main function
 const startGame = () => {
   gameStarted = true;
+  blocks.forEach((block, index) => {
+    setTimeout(() => { 
+      block.classList.toggle('greyed-out')
+    }, index * 150)
+  })
   if (levelCounterText.classList.contains("hidden")) {
     levelCounterText.classList.remove("hidden");
     startGameText.classList.add("hidden");
   }
-  startLevel();
+  setTimeout(() => {
+    startLevel();
+  }, 1000)
 };
 
 //Play Again button
 
 playAgainBtn.addEventListener("click", () => {
   gameOverScreen.classList.toggle("small");
+  gameOverNewBestScore.classList.toggle("hidden")
   gameSeq.length = 0;
   playerSeq.length = 0;
   gameStarted = true;
