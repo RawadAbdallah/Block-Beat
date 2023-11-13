@@ -1,13 +1,15 @@
 
+*{
+  user-select: none;
+}
 
 body {
     display: grid;
     place-items: center;
     background: #04001b;
     font-family: "Oswald", sans-serif;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    width: 100vw; 
+    height: 100%;
   }
   
   .app {
@@ -15,8 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 360px;
-    height: 640px;
+    width: 100%;
+    height: 100vh;
     padding: 80px 0px;
     background: rgb(62, 1, 93);
     background: radial-gradient(
@@ -32,6 +34,7 @@ body {
   
   header h1 {
     font-family: 'Zen Dots', sans-serif;
+    font-size: max(4vw, 2rem);
     letter-spacing: 4px;
     background: -webkit-linear-gradient(rgb(185, 0, 210), rgb(0, 170, 255));
     background-clip: initial;
@@ -40,6 +43,7 @@ body {
   }
   
   header p {
+    font-size: max(2vw, 1.3rem);
     color: #7982c8;
   }
   
@@ -54,13 +58,15 @@ body {
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
+    grid-gap: max(3vw,30px);
   }
   
   .block {
     position: relative;
-    width: 100px;
-    height: 100px;
+    min-width:100px;
+    min-height: 100px;
+    width: 130px;
+    height: 130px;
     border: 1px solid transparent;
     border-radius: 15px;
     box-shadow: inset 2px 2px 5px 2px rgba(255, 255, 255, 0.658);
@@ -290,8 +296,8 @@ body {
   
   #mute-button{
     position:absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 15px;
+    bottom: 15px;
     cursor: pointer;
   }
   
