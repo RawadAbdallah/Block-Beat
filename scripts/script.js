@@ -10,6 +10,7 @@ const bestScoreElem = document.getElementById('best-score');
 const gameOverScreen = document.getElementById("game-over-screen");
 const gameOverScreenScore = document.getElementById("game-over-screen-score");
 const gameOverNewBestScore = document.getElementById('game-over-new-best-score');
+const loadingScreen = document.getElementById('loading-screen');
 const muteButton = document.getElementById("mute-button");
 const successOverlay = document.getElementById("success-overlay");
 const playAgainBtn = document.getElementById("play-again-btn");
@@ -29,7 +30,8 @@ pinkBlockSound.volume = 0.1;
 gameOverSound.volume = 0.02;
 gameMusic.volume = 0.05;
 
-let gameStarted = false;
+let isGameLoading = true
+let isGameStarted = false;
 let isShowingSeq = false;
 let isBestScoreBeaten = false;
 const gameSeq = [];
@@ -39,6 +41,17 @@ let bestScore = parseInt(sessionStorage.getItem('best-score')) || 0
 
 window.addEventListener('load', () => {
   bestScoreElem.innerText = `Best score: ${bestScore}`
+  setTimeout(() => {
+    blocks.forEach((block, index) => {
+      setTimeout(() => { 
+        block.classList.toggle('greyed-out')
+      }, index * 150)
+    })
+  }, 2000) 
+  setTimeout(() => {
+    isGameLoading = false
+    loadingScreen.classList.toggle('small')
+  }, 4000)
 })
 
 const gameOver = () => {
@@ -49,7 +62,7 @@ const gameOver = () => {
   //reset
   gameOverScreen.classList.toggle("small");
   gameOverScreenScore.innerText = levelCounter;
-  gameStarted = false;
+  isGameStarted = false;
   isBestScoreBeaten = false;
   gameSeq.length = 0;
   playerSeq.length = 0;
@@ -88,7 +101,7 @@ const checkUserInput = () => {
 const addClickEventListener = (block, number, blockSound) => {
   block.addEventListener("click", () => {
     if (!isShowingSeq) { //for stopping the player from interfering the animation and cheating.
-      if (gameStarted) {
+      if (isGameStarted) {
         showBlock(block, blockSound)
         playerSeq.push(number);
         checkUserInput();
@@ -149,12 +162,7 @@ const startLevel = () => {
 
 //Start Game main function
 const startGame = () => {
-  gameStarted = true;
-  blocks.forEach((block, index) => {
-    setTimeout(() => { 
-      block.classList.toggle('greyed-out')
-    }, index * 150)
-  })
+  isGameStarted = true;
   if (levelCounterText.classList.contains("hidden")) {
     levelCounterText.classList.remove("hidden");
     startGameText.classList.add("hidden");
@@ -171,16 +179,16 @@ playAgainBtn.addEventListener("click", () => {
   gameOverNewBestScore.classList.toggle("hidden")
   gameSeq.length = 0;
   playerSeq.length = 0;
-  gameStarted = true;
+  isGameStarted = true;
   startLevel();
 });
 
 window.addEventListener("keydown", () => {
-  if (!gameStarted) startGame();
+  if (!isGameStarted && !isGameLoading) startGame();
 });
 
 window.addEventListener('click', () => {
-  if(!gameStarted) startGame();
+  if(!isGameStarted && !isGameLoading) startGame();
 })
 
 // Mute button
