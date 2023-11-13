@@ -10,6 +10,7 @@ body {
     font-family: "Oswald", sans-serif;
     width: 100vw; 
     height: 100%;
+    cursor: url('../assets/images/normal-cursor.png'), auto;
   }
   
   .app {
@@ -29,12 +30,11 @@ body {
     );
     color: white;
     text-align: center;
-    cursor: pointer;
   }
   
   header h1 {
     font-family: 'Zen Dots', sans-serif;
-    font-size: max(4vw, 2rem);
+    font-size: max(3  vw, 2rem);
     letter-spacing: 4px;
     background: -webkit-linear-gradient(rgb(185, 0, 210), rgb(0, 170, 255));
     background-clip: initial;
@@ -70,9 +70,18 @@ body {
     border: 1px solid transparent;
     border-radius: 15px;
     box-shadow: inset 2px 2px 5px 2px rgba(255, 255, 255, 0.658);
-    transition: transform 0.1s ease-in-out, border 0.25s ease-in;
-    cursor: pointer;
+    transition: transform 0.1s ease-in-out, border 0.25s ease-in, box-shadow 0.1s ease-in-out;
+    cursor: url('../assets/images/pointer-cursor.png'), pointer;
     overflow: hidden;
+  }
+
+  .block:hover{
+    transform: scale(1.05)
+  }
+
+  .block:active{
+    transform: scale(1);
+    box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.628);
   }
   
   .top-left,
@@ -267,7 +276,7 @@ body {
   }
   
   #game-over-screen h1{
-    font-size: 3rem;
+    font-size: max(4vw,3rem);
     color: tomato;
   }
   
