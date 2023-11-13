@@ -6,12 +6,12 @@
 
 ## Features
 
-    - loading screen 🔃
-    - great animations 
-    - background music and interaction sounds 🔉
-    - session storage for best score 👑
-    - responsive 
-    - custom cursors
+- loading screen 🔃
+- great animations 
+- background music and interaction sounds 🔉
+- session storage for best score 👑
+- responsive 
+- custom cursors
 
 ## Game screenshots 👀
 
