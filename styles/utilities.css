@@ -26,29 +26,6 @@
   opacity: 0;
 }
 
-.scale-up-animation{
-  animation: scale-up-animation .4s ease-in-out forwards;
-}
-
-@keyframes scale-up-animation {
-  0%{
-    transform: scale(0);
-  }
-
-  75%{
-    transform: scale(1.1)
-  }
-
-  100%{
-    transform: scale(1)
-  }
-
-
-}
-
-
-
-
 .loader {
   animation: loader 1s ease infinite;
 }
@@ -58,4 +35,10 @@
   50% { transform: rotate(20deg) scale(1.2); }
   70% { transform: rotate(0deg) scale(1.2); }
   100% { transform: scale(1); }
+}
+
+.greyed-out{
+  filter: blur(2px);
+  opacity: .1;
+  transform: scale(0.9);
 }
