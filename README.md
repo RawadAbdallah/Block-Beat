@@ -6,12 +6,16 @@
 
 ## Features
 
-    - loading screen 🔃
-    - great animations 
-    - background music and interaction sounds 🔉
-    - session storage for best score 👑
+- loading screen 🔃
+- great animations 
+- background music and interaction sounds 🔉
+- session storage for best score 👑
+- responsive 
+- custom cursors
 
 ## Game screenshots 👀
 
 | ![Game Screenshot 1](./assets/images/screenshot%201.jpeg) |![Game Screenshot 2](./assets/images/screenshot%202.jpeg)  |
 |--|--|
+
+Give it a visit here 👉🏻 (https://rawadabdallah.github.io/Block-Beat/)
