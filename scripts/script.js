@@ -180,7 +180,9 @@ playAgainBtn.addEventListener("click", () => {
   gameSeq.length = 0;
   playerSeq.length = 0;
   isGameStarted = true;
-  startLevel();
+  setTimeout(() => {
+    startLevel();
+  }, 1000)
 });
 
 window.addEventListener("keydown", () => {
